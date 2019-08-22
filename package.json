@@ -1,0 +1,30 @@
+{
+  "name": "firstproject",
+  "version": "1.0.0",
+  "description": "Project #1. From Academy of Verstki",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^6.2.1",
+    "jshint": "^2.10.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMZhukov/FirstProjectLearning.git"
+  },
+  "author": "Andrey Zhukov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AMZhukov/FirstProjectLearning/issues"
+  },
+  "homepage": "https://github.com/AMZhukov/FirstProjectLearning#readme"
+}
