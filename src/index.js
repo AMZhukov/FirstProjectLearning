@@ -5,6 +5,6 @@ let money = "power glory",
     mission = "all",
     period = null;
 
-console.log("money", money);
+console.log("money!", money);
 
 alert("Hello, world!");
