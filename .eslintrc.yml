@@ -1,0 +1,5 @@
+extends:
+	- 'airbnb-base'
+env: airbnb-base
+	node: true
+	browser: true
