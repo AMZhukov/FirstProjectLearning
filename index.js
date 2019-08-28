@@ -1,18 +1,16 @@
-let money = null,
+'use strict'
+let money = prompt("Ваш месячный доход?"),
     income = 'freelance',
-    addExpenses = null,
-    deposit = null,
+    addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую"),
+    deposit = confirm("Есть ли у вас депозит в банке?"),
     mission = 25000,
-    period = 12,
-    spend = [];
+    period = null,
+    spend = [],
     descrSpend = [],
     budgetMonth = null,
     budgetDay = null;
 
 
-money = prompt("Ваш месячный доход?");
-addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую");
-deposit = confirm("Есть ли у вас депозит в банке?");
 descrSpend[0] = prompt("Какие обязательные ежемесячные расходы у вас есть?");
 spend[0] = prompt("Во сколько это обойдется?");
 descrSpend[1] = prompt("Какие обязательные ежемесячные расходы у вас есть?");
