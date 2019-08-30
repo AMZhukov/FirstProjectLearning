@@ -40,5 +40,5 @@ console.log('Тип данных money –', showTypeOf(money));
 console.log('Тип данных income –', showTypeOf(income));
 console.log('Тип данных deposit –', showTypeOf(deposit));
 console.log(getStatusIncome());
-console.log('Накопления за период', mission);
+console.log('Накопления за период', accumulatedMonth);
 console.log('Срок достижения в месяцах', getTargetMonth());
