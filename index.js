@@ -17,13 +17,8 @@ start();
 let showTypeOf = function(item){
     console.log(item, typeof item);
 };
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
 let expenses1,
     expenses2;
-
-console.log(addExpenses.toLowerCase().split(','));
 
 let getExpensesMonth = function(){
     let sum = 0;
@@ -45,8 +40,6 @@ let getExpensesMonth = function(){
 
 let expensesAmount = getExpensesMonth();
 
-console.log ('Расходы за месяц: ' + expensesAmount);
-
 let getAccumulatedMonth = function(){
     return (money - expensesAmount);
 };
@@ -64,7 +57,7 @@ let budgetDay = getAccumulatedMonth() / 30,
     return ("Цель не будет достигнута");
 }
 
-console.log(checkTargetMonth());
+
 
 let getStatusIncome = function () {
     if (budgetDay >= 800) return ("Высокий уровень дохода");
@@ -73,4 +66,11 @@ let getStatusIncome = function () {
     else return ("Что то пошло не так");
 }
 
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
+
+console.log(checkTargetMonth());
 console.log(getStatusIncome());
+console.log(addExpenses.toLowerCase().split(','));
+console.log ('Расходы за месяц: ' + expensesAmount);
