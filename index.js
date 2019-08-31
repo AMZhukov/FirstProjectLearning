@@ -4,21 +4,23 @@ let money = null,
     addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую"),
     deposit = confirm("Есть ли у вас депозит в банке?"),
     mission = 50000,
-    pediod = 3;
+    pediod = 3,
+    expenses1,
+    expenses2,
+    expensesAmount = null;
 
 let start = function() {
     do {
-        money = prompt('Ваш месячный доход', 50000);
+        money = +prompt('Ваш месячный доход', 50000);
     } while(isNaN(money) || money === '' || money === null);
+    return money;
 };
-start();
 
+start();
 
 let showTypeOf = function(item){
     console.log(item, typeof item);
 };
-let expenses1,
-    expenses2;
 
 let getExpensesMonth = function(){
     let sum = 0;
@@ -38,7 +40,7 @@ let getExpensesMonth = function(){
     return sum;
 };
 
-let expensesAmount = getExpensesMonth();
+expensesAmount = getExpensesMonth();
 
 let getAccumulatedMonth = function(){
     return (money - expensesAmount);
