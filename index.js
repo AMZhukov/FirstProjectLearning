@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 let money = null,
     income = 'freelance',
     expenses1 = null,
@@ -28,7 +28,6 @@ let appData = {
     asking: function (){
             appData.addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую", "Еда, вода");
             appData.addExpenses.toLowerCase().split(',');
-            console.log(appData.addExpenses);
             appData.deposit = confirm("Есть ли у вас депозит в банке?");
             let sum = 0;
             for (let i = 0, ask = null; i < 2; i++){
@@ -63,34 +62,29 @@ let appData = {
 
     getTargetMonth: function (){ //вычисление за сколько накопятся деньги
         appData.period = appData.mission / appData.expensesMonth;
-        appData.getStatusIncome();
-        },
+    },
 
     getStatusIncome: function (){ //вычисление уровня дохода
-        if (appData.budgetDay >= 800) console.log("Высокий уровень дохода");
-        else if ((appData.budgetDay >= 300) && (appData.budgetDay < 800)) console.log("Средний уровень дохода");
-        else if ((appData.budgetDay >= 0) && (appData.budgetDay < 300)) console.log("Низкий уровень дохода");
-        else console.log("Что то пошло не так");
+        if (appData.budgetDay > 800) return ("Высокий уровень дохода");
+        else if (appData.budgetDay > 300) return ("Средний уровень дохода");
+        else if (appData.budgetDay > 0) return ("Низкий уровень дохода");
+        else return ("Что то пошло не так");
     },
     
     checkTargetMonth: function (){
         if (appData.budgetMonth  >= 0){
-            console.log("Цель будет достигнута за " + Math.ceil(appData.period) + ' месяца');
+            return ("Цель будет достигнута за " + Math.ceil(appData.period) + ' месяца');
         }
-        else console.log("Цель не будет достигнута");
-    },
-
-    getDisplayObj: function () {
-        for (let key in appData){
-            (console.log('Ключ: ' + key + ' Значение: ' + appData[key]));
-        };
+        else return ("Цель не будет достигнута");
     }
-
-}
+};
 
 
 appData.asking();
-console.log(appData.expenses);
-console.log(appData.period);
+console.log('Расходы за месяц', appData.expensesMonth);
+console.log(appData.checkTargetMonth());
+console.log(appData.getStatusIncome());
 console.log('Наша программа включает в себя следующие данные: ');
-appData.getDisplayObj();
+for (let key in appData){
+    (console.log('Наша программа включает в себя следующие данные: ' + key + ' - ' + appData[key]));
+}
