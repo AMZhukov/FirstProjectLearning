@@ -71,7 +71,6 @@ let appData = {
         else if ((appData.budgetDay >= 300) && (appData.budgetDay < 800)) console.log("Средний уровень дохода");
         else if ((appData.budgetDay >= 0) && (appData.budgetDay < 300)) console.log("Низкий уровень дохода");
         else console.log("Что то пошло не так");
-        appData.checkTargetMonth();
     },
     
     checkTargetMonth: function (){
@@ -91,7 +90,7 @@ let appData = {
 
 
 appData.asking();
-console.log(appData.budgetMonth);
-
+console.log(appData.expenses);
+console.log(appData.period);
 console.log('Наша программа включает в себя следующие данные: ');
 appData.getDisplayObj();
