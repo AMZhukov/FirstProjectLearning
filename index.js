@@ -3,7 +3,7 @@ let money = null, income = 'freelance', expenses1 = null, expenses2 = null,
     start = function() {
         do {
             money = +prompt('Ваш месячный доход', 50000);
-        } while(isNaN(money) || money === '' || money === null);
+        } while(isNaN(money) || money == '' || money == null);
         return money;
     };
 
@@ -83,7 +83,7 @@ let appData = {
         do {
             checkText = prompt(ask, text);
         }
-        while (!isNaN(checkText) || checkText === '' || checkText === null);
+        while (!isNaN(checkText) || checkText == '' || checkText == null);
         return checkText;
     },
     getUpperLetter: function(arr){
