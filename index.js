@@ -36,8 +36,8 @@ let appData = {
         appData.deposit = confirm("Есть ли у вас депозит в банке?");
         for (let i = 0; i < 2; i++){
             
-            let itemExpenses = appData.getCheckText('Введите цель накоплений?', 'Автомобиль'),
-                cashExpenses = appData.getCheckDigit('Сколько в месяц откладывать?', 2500);
+            let itemExpenses = appData.getCheckText('Введите обязательную статью расходов', 'Кварплата'),
+                cashExpenses = appData.getCheckDigit('Во сколько это обойдется?', 2500);
             
             appData.expenses[itemExpenses] = cashExpenses;
 
@@ -56,17 +56,10 @@ let appData = {
         return appData.mission / appData.expensesMonth;
     },
     getStatusIncome: function (){ //вычисление уровня дохода
-        if (appData.budgetDay > 800) {
-            return ("Высокий уровень дохода");
-
-        } else if ((appData.budgetDay > 300)) {
-            return ("Средний уровень дохода");
-        } else if ((appData.budgetDay > 0)) {
-            return ("Низкий уровень дохода");
-
-        } else {
-            ("Что то пошло не так");
-        }
+        if (appData.budgetDay >= 800) return ("Высокий уровень дохода");
+        else if ((appData.budgetDay >= 300)) return ("Средний уровень дохода");
+        else if ((appData.budgetDay >= 0)) return ("Низкий уровень дохода");
+        else return ("Что то пошло не так");
     },
     getInfoDeposit: function() {
         if(appData.deposit){
@@ -82,7 +75,7 @@ let appData = {
         do {
             checkDigit = prompt(ask, digit);
         } 
-        while (isNaN(checkDigit) || checkDigit === '' || checkDigit === null);
+        while (isNaN(checkDigit) || checkDigit == '' || checkDigit == null);
         return checkDigit;
     },
     getCheckText: function(ask, text){
