@@ -14,18 +14,18 @@ let start = document.getElementById('start'),
     additionalExpensesValue =  document.getElementsByClassName('additional_expenses-value')[0],
     incomePeriodValue = document.getElementsByClassName('income_period-value')[0],
     targetMonthValue = document.getElementsByClassName('target_month-value')[0],
-    salaryAmount = document.querySelectorAll('.salary-amount'),
-    incomeTitle = document.querySelectorAll('.income-title'),
-    expensesTitle = document.querySelectorAll('.expenses-title'),
+    salaryAmount = document.querySelector('.salary-amount'),
+    incomeTitle = document.querySelectorAll('.income-title'),   //Если убрать All, не будет блокироваться запись. Т.к. у родителя такой класс есть
+    expensesTitle = document.querySelectorAll('.expenses-title'), //Если убрать All, клон не создается
     expensesItems = document.querySelectorAll('.expenses-items'),
     additionalExpenses = document.querySelector('.additional_expenses'),
     periodSelect = document.querySelector('.period-select'),
     additionalExpensesItem = document.querySelector('.additional_expenses-item'),
     targetAmount = document.querySelector('.target-amount'),
-    incomeItem = document.querySelectorAll('.income-items'),
+    incomeItem = document.querySelectorAll('.income-items'), //Если убрать All, клон не создается
     periodAmount = document.querySelector('.period-amount'),
-    expensesAmount = document.querySelectorAll('.expenses-amount'),
-    incomeAmount = document.querySelectorAll('.income-amount');
+    expensesAmount = document.querySelectorAll('.expenses-amount'), //Если убрать All, клон не создается
+    incomeAmount = document.querySelectorAll('.income-amount'); //Если убрать All, клон не создается
 
 
 let appData = {
@@ -80,9 +80,9 @@ let appData = {
     delAttribute: function () {
         appData.delAttributeForEach(incomeAmount);
         appData.delAttributeForEach(incomeAmount);
-        appData.delAttributeForEach(salaryAmount);
-        appData.delAttributeForEch(incomeTitle);
-        appData.delAttributeForEach(incomeAmount);
+        salaryAmount.setAttribute("readonly", "");
+        appData.delAttributeForEach(incomeTitle); //Здесь иначе никак не получается. Т.к. тут ещё у родителя такой же класс. Из-за этого только родитель блокировку получает
+        incomeAmount.setAttribute("readonly", "");
         appData.delAttributeForEach(expensesTitle);
         appData.delAttributeForEach(additionalIncomeItem);
         appData.delAttributeForEach(expensesTitle);
