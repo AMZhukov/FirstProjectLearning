@@ -66,7 +66,7 @@ let appData = {
         inputText.forEach(function (item) {
             item.removeAttribute('readonly');
             item.value = '';
-        })
+        });
         document.querySelector('#start').style.display='block';
         document.querySelector('#cancel').style.display='none';
     },
@@ -76,17 +76,17 @@ let appData = {
         expensesMonthValue.value = this.expensesMonth;
         additionalExpensesValue.value = this.addExpenses.join(', ');
         additionalIncomeValue.value = this.addIncome.join(', ');
-        targetMonthValue.value = Math.ceil(appData.getTargetMonth());
+        targetMonthValue.value = Math.ceil(this.getTargetMonth());
 
-        appData.updateCalcPeriod();
-        periodSelect.addEventListener('change', appData.updateCalcPeriod);
+        this.updateCalcPeriod();
+        periodSelect.addEventListener('change', this.updateCalcPeriod.bind(appData));
         this.delAttribute();
         this.hideVisibleButton();
 
     },
 
     updateCalcPeriod: function (){
-        incomePeriodValue.value = appData.calcPeriod();
+        incomePeriodValue.value = this.calcPeriod();
     },
     delAttribute: function () {
         salaryAmount.setAttribute("readonly", "");
@@ -187,7 +187,7 @@ let appData = {
         this.budgetDay = Math.floor(this.budgetMonth / 30);
     },
     getTargetMonth: function () { //вычисление за сколько накопятся деньги
-        return (targetAmount.value / appData.budgetMonth);
+        return (targetAmount.value / this.budgetMonth);
     },
     getStatusIncome: function () { //вычисление уровня дохода
         if (this.budgetDay >= 800) return ("Высокий уровень дохода");
@@ -208,7 +208,7 @@ let appData = {
         periodAmount.innerHTML = temp;
     },
     calcPeriod: function () {
-        return (appData.budgetMonth * periodSelect.value);
+        return (this.budgetMonth * periodSelect.value);
     },
     getCheckDigit: function (ask, digit) {
         let checkDigit;
