@@ -63,12 +63,14 @@ AppData.prototype.start = function () {
         cancel.style.display = 'block';
 
         this.budget = +salaryAmount.value;
-
         this.getExpenses();
         this.getIncome();
         this.getExpensesMonth();
-        this.getAddExpenses();
-        this.getAddIncome();
+        // this.getAddExpenses();
+        // this.getAddIncome();
+        console.log(this.addExpenses);
+        this.getAdd(addExpItem);
+        this.getAdd(addIncItem);
         this.getInfoDeposit();
         this.getBudget();
         this.getInfoDeposit();
@@ -92,9 +94,6 @@ AppData.prototype.showResult = function () {
 
 };
 
-//(expensesItems, btnExpAdd, `expenses`)
-//(incomeItems, btnIncAdd, `income`)
-
 AppData.prototype.addBlock = function(items, btnAdd, type) {
 
     let cloneItem = items[0].cloneNode(true);
@@ -114,16 +113,7 @@ AppData.prototype.getExpenses = function () {
         }
     });
 };
-// AppData.prototype.addIncomeBlock = function () {
-//
-//     let cloneIncomeItem = incomeItems[0].cloneNode(true);
-//     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, btnIncAdd);
-//     incomeItems = document.querySelectorAll('.income-items');
-//
-//     if (incomeItems.length === 3) {
-//         btnIncAdd.style.display = 'none';
-//     }
-// };
+
 AppData.prototype.getIncome = function () {
     incomeItems.forEach( (item) => {
         let itemIncome = item.querySelector('.income-title').value;
@@ -138,23 +128,29 @@ AppData.prototype.getIncome = function () {
         console.log(this.incomeMonth);
     }
 };
-AppData.prototype.getAddExpenses = function () {
-    let addExpenses = addExpItem.value.split(',');
-    addExpenses.forEach( (item) => {
-        item = item.trim();
-        if (item != '') {
-            this.addExpenses.push(item);
-        }
-    });
+
+AppData.prototype.getAdd = function (addItem) {
+    let temp = null;
+    if (Object.keys(addItem).length < 2) {
+        temp = addItem.value.split(',');
+        temp.forEach((item) => {
+            let itemValue = item.trim();
+            if (itemValue != '') {
+                this.addExpenses.push(itemValue);
+            }
+        });
+    }
+    else {
+        temp = addItem;
+        temp.forEach((item) => {
+            let itemValue = item.value.trim();
+            if (itemValue != '') {
+                this.addIncome.push(itemValue);
+            }
+        });
+    }
 };
-AppData.prototype.getAddIncome = function () {
-    addIncItem.forEach( (item) => {
-        let itemValue = item.value.trim();
-        if (itemValue != '') {
-            this.addIncome.push(itemValue);
-        }
-    });
-};
+
 AppData.prototype.getExpensesMonth = function () {
     for (let key in this.expenses) {
         this.expensesMonth += +this.expenses[key];
@@ -198,7 +194,7 @@ AppData.prototype.calcPeriod = function () {
 AppData.prototype.reset = function () {
 
     let inputTextData = document.querySelectorAll('.data input[type = text]'),
-        resultInputAll = document.querySelectorAll('.result input[type = text]');
+        resultInputAll = document.querySelectorAll('.result input[type = text');
 
     inputTextData.forEach( (elem) => {
         elem.value = '';
@@ -262,17 +258,14 @@ AppData.prototype.checkBox = function () {
     }
 };
 
-
-// elem.addEventListener("click", function(e) {
-//     console.log(this.className);                    // выведет в консоль значение свойства className элемента elem
-//     console.log(e.currentTarget === this);   // true
-// })
-
-
 AppData.prototype.eventListeners = function () {
     start.addEventListener('click', this.start.bind(this));
-    btnExpAdd.addEventListener('click', this.addBlock);
-    btnIncAdd.addEventListener('click', this.addBlock[incomeItems, btnIncAdd, `income`]);
+    btnExpAdd.addEventListener('click', () => {
+        this.addBlock(expensesItems, btnExpAdd, `expenses`);
+    });
+    btnIncAdd.addEventListener('click', () => {
+        this.addBlock(incomeItems, btnIncAdd, `income`);
+    });
     salaryAmount.addEventListener('keyup', this.check);
     cancel.addEventListener('click', this.reset.bind(this));
     checkBox.addEventListener('change', this.checkBox.bind(this));
@@ -296,7 +289,5 @@ AppData.prototype.eventListeners = function () {
 
 const appData = new AppData();
 appData.eventListeners();
-console.log(appData);
-
 
 
