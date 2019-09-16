@@ -193,7 +193,7 @@ AppData.prototype.calcPeriod = function () {
 };
 AppData.prototype.reset = function () {
 
-    let inputTextData = document.querySelectorAll('.data input[type = text]'),
+    const inputTextData = document.querySelectorAll('.data input[type = text]'),
         resultInputAll = document.querySelectorAll('.result input[type = text');
 
     inputTextData.forEach( (elem) => {
@@ -275,7 +275,7 @@ AppData.prototype.eventListeners = function () {
         periodAmount.innerHTML = periodSelect.value;
     });
 
-    let addExp = [];
+    const addExp = [];
     for (let i = 0; i < appData.addExpenses.length; i++) {
         let element = appData.addExpenses[i].tirm();
         element = element.charAt(0).toUpperCase() + element.substring(1).toLowerCase();
