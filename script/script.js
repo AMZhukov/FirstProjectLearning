@@ -106,6 +106,7 @@ class AppData {
     }
 
     getExpenses() {
+        expensesItems = document.querySelectorAll('.expenses-item');
         expensesItems.forEach((item) => {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
@@ -116,6 +117,7 @@ class AppData {
     }
 
     getIncome() {
+        incomeItems = document.querySelectorAll('.income-item');
         incomeItems.forEach((item) => {
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
