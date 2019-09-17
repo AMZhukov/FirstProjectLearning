@@ -105,6 +105,7 @@ AppData.prototype.addBlock = function(items, btnAdd, type) {
     }
 };
 AppData.prototype.getExpenses = function () {
+    expensesItems = document.querySelectorAll('.expenses-item');
     expensesItems.forEach( (item) => {
         let itemExpenses = item.querySelector('.expenses-title').value;
         let cashExpenses = item.querySelector('.expenses-amount').value;
@@ -115,6 +116,7 @@ AppData.prototype.getExpenses = function () {
 };
 
 AppData.prototype.getIncome = function () {
+    incomeItems = document.querySelectorAll('.income-item');
     incomeItems.forEach( (item) => {
         let itemIncome = item.querySelector('.income-title').value;
         let cashIncome = item.querySelector('.income-amount').value;
